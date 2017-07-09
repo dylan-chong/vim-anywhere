@@ -46,7 +46,7 @@ require_one_installed() {
 }
 
 AW_PATH=$HOME/.vim-anywhere
-AW_URL='https://github.com/cknadler/vim-anywhere'
+AW_URL='https://github.com/dylan-chong/vim-anywhere'
 
 ###
 # pre-installation checks
@@ -76,7 +76,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 
 # OSX specific checks
 elif [[ $OSTYPE == "darwin"* ]]; then
-  require_installed mvim 'Run `brew install macvim`.'
+  require_installed vimr 'Run `brew cask install vimr`.'
 
 # Unsupported OS
 else
@@ -120,8 +120,8 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 
 # OSX install
 elif [[ $OSTYPE == "darwin"* ]]; then
-  # store the absolute path to the mvim executable
-  which mvim > $AW_PATH/.path
+  # store the absolute path to the vimr executable
+  which vimr > $AW_PATH/.path
 
   # install the workflow as a service
   mkdir -p $HOME/Library/Services

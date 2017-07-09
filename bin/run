@@ -38,7 +38,7 @@ done
 AW_PATH=$HOME/.vim-anywhere
 TMPFILE_DIR=/tmp/vim-anywhere
 TMPFILE=$TMPFILE_DIR/doc-$(date +"%y%m%d%H%M%S")
-VIM_OPTS=--nofork
+VIM_OPTS="--wait --nvim --nofork"
 
 # Use ~/.gvimrc.min or ~/.vimrc.min if one exists
 VIMRC_PATH=($HOME/.gvimrc.min $HOME/.vimrc.min)
@@ -66,13 +66,17 @@ elif [[ $OSTYPE == "darwin"* ]]; then
     "Please reinstall vim-anywhere."
 
   app=$(osascript $AW_PATH/script/current_app.scpt)
-  mvim_path=$(cat $AW_PATH/.path)
+  vimr_path=$(cat $AW_PATH/.path)
 
-  require_file_exists $mvim_path \
-    "mvim must have been move or uninstalled.\nPlease make sure it is" \
+  require_file_exists $vimr_path \
+    "vimr must have been move or uninstalled.\nPlease make sure it is" \
     "available in your path and then reinstall vim-anywhere."
 
-  $mvim_path $VIM_OPTS $TMPFILE
+  say before
+  say $vimr_path $VIM_OPTS $TMPFILE
+  $vimr_path $VIM_OPTS $TMPFILE
+  # TODO why does this command never run
+  say after
   # todo, fix invalid file
   
   # NOTE
